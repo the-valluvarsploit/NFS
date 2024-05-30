@@ -123,16 +123,16 @@ def main():
             username8 + ' = ' + str(credits_ntftr) + '\n\n'
     }
 
-
     requests.post(slack_webhook, json= payload, headers={'content-type': 'application/json'})
+
+main()  
     
-    
-def run_every_hour():
-    while True:
-        main()
-        # Sleep for half an hour (3600 seconds)
-        time.sleep(3600)
+# def run_every_hour():
+#     while True:
+#         main()
+#         # Sleep for half an hour (3600 seconds)
+#         time.sleep(3600)
 
 
-if __name__ == "__main__":
-    run_every_hour()
+# if __name__ == "__main__":
+#     run_every_hour()
