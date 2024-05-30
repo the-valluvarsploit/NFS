@@ -1,11 +1,11 @@
-name: run main.py
-
-on:
-  workflow_dispatch
+name: credit checker
 
 # on:
-#   schedule:
-#     - cron: '0 0 * * 1' # At 00:00 on Monday
+#   workflow_dispatch
+
+on:
+  schedule:
+    - cron: '0 * * * *' # At 00:00 on Monday
 
 jobs:
   build:
