@@ -1,3 +1,3 @@
 import os
 
-print(os.environ["testo"])
+print(os.environ["TESTO"])
