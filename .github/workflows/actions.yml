@@ -27,7 +27,28 @@ jobs:
           
       - name: execute py script # run main.py
         env:
-          SOME_SECRET: ${{ secrets.testo }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          MANALI_API_ENDPOINT: ${{secrets.MANALI_API_ENDPOINT}}
+          DATAGEN_URL: ${{secrets.DATAGEN_URL}}
+          NTFV_USERNAME: ${{secrets.NTFV_USERNAME}}
+          NTFV_PASSWORD: ${{secrets.NTFV_PASSWORD}}
+          NTF1_USERNAME: ${{secrets.NTF1_USERNAME}}
+          NTF1_PASSWORD: ${{secrets.NTF1_PASSWORD}}
+          NTFTRANS_USERNAME: ${{secrets.NTFTRANS_USERNAME}}
+          NTFTRANS_PASSWORD: ${{secrets.NTFTRANS_PASSWORD}}
+          NTFPROMO_USERNAME: ${{secrets.NTFPROMO_USERNAME}}
+          NTFPROMO_PASSWORD: ${{secrets.NTFPROMO_PASSWORD}}
+          DATAG_NTF_USERNAME: ${{secrets.DATAG_NTF_USERNAME}}
+          DATAG_NTF_PASSWORD: ${{secrets.DATAG_NTF_PASSWORD}}
+          DATAG_NTF2_USERNAME: ${{secrets.DATAG_NTF2_USERNAME}}
+          DATAG_NTF2_PASSWORD: ${{secrets.DATAG_NTF2_PASSWORD}}
+          BSNL_NTFTR8_URL: ${{secrets.BSNL_NTFTR8_URL}}
+          BSNL_NTFTR8_USERNAME: ${{secrets.BSNL_NTFTR8_USERNAME}}
+          BSNL_NTFTR8_PASSWORD: ${{secrets.BSNL_NTFTR8_PASSWORD}}
+          BSNL_NTFTR_URL: ${{secrets.BSNL_NTFTR_URL}}
+          BSNL_NTFTR_USERNAME: ${{secrets.BSNL_NTFTR_USERNAME}}
+          BSNL_NTFTR_PASSWORD: ${{secrets.BSNL_NTFTR_PASSWORD}}
+
         run: python nettyscript.py
           
       # - name: commit files
