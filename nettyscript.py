@@ -95,37 +95,32 @@ def main():
 
     username1, credits_ntfv = get_manali_credits(ntfv_username, ntfv_password)
     time.sleep(5)
-    # username2, credits_ntf1 = get_manali_credits(ntf1_username, ntf1_password)
-    # time.sleep(5)
-    # username3, credits_ntftrans = get_manali_credits(ntftrans_username, ntftrans_password)
-    # time.sleep(5)
-    # username4, credits_ntfpromo = get_manali_credits(ntfpromo_username, ntfpromo_password)
-    # time.sleep(5)
-    # username5, credits_datag_ntf = get_dategen_credits(datagntf_username, datagntf_password)
-    # time.sleep(5)
-    # username6, credits_datag_ntf2 = get_dategen_credits(datagntf2_username, datagntf2_password)
-    # time.sleep(5)
-    # username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)
-    # time.sleep(5)
-    # username8, credits_ntftr = get_bsnl_credits(bsnl_ntftr_url, bsnl_ntftr_username, bsnl_ntftr_password)
+    username2, credits_ntf1 = get_manali_credits(ntf1_username, ntf1_password)
+    time.sleep(5)
+    username3, credits_ntftrans = get_manali_credits(ntftrans_username, ntftrans_password)
+    time.sleep(5)
+    username4, credits_ntfpromo = get_manali_credits(ntfpromo_username, ntfpromo_password)
+    time.sleep(5)
+    username5, credits_datag_ntf = get_dategen_credits(datagntf_username, datagntf_password)
+    time.sleep(5)
+    username6, credits_datag_ntf2 = get_dategen_credits(datagntf2_username, datagntf2_password)
+    time.sleep(5)
+    username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)
+    time.sleep(5)
+    username8, credits_ntftr = get_bsnl_credits(bsnl_ntftr_url, bsnl_ntftr_username, bsnl_ntftr_password)
 
     print(f"\n---------------------------------------------------\n")
 
-    # payload = {
-    # 'text': '<!channel>, Credits Update:\n\n' +
-    #         username1 + ' = ' + str(credits_ntfv) + '\n\n' +
-    #         username2 + ' = ' + str(credits_ntf1) + '\n\n' +
-    #         username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
-    #         username4 + ' = ' + str(credits_ntfpromo) + '\n\n' +
-    #         username5 + ' = ' + str(credits_datag_ntf) + '\n\n' +
-    #         username6 + ' = ' + str(credits_datag_ntf2) + '\n\n' +
-    #         username7 + ' = ' + str(credits_ntftr8) + '\n\n' +
-    #         username8 + ' = ' + str(credits_ntftr) + '\n\n'
-    # }
-
     payload = {
     'text': '<!channel>, Credits Update:\n\n' +
-            username1 + ' = ' + str(credits_ntfv) + '\n\n'
+            username1 + ' = ' + str(credits_ntfv) + '\n\n' +
+            username2 + ' = ' + str(credits_ntf1) + '\n\n' +
+            username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
+            username4 + ' = ' + str(credits_ntfpromo) + '\n\n' +
+            username5 + ' = ' + str(credits_datag_ntf) + '\n\n' +
+            username6 + ' = ' + str(credits_datag_ntf2) + '\n\n' +
+            username7 + ' = ' + str(credits_ntftr8) + '\n\n' +
+            username8 + ' = ' + str(credits_ntftr) + '\n\n'
     }
 
 
