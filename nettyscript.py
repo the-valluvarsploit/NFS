@@ -15,12 +15,9 @@ def get_bsnl_credits(URL, userid, password):
     if creditResponse.status_code == 200:
         jsonCreditResponse = creditResponse.json()
         credits = jsonCreditResponse['response']['account']['smsBalance']
-        # print(userid + " = " + str(credits))
         print(f"{userid} = {credits}\n")
 
     return userid, credits
-
-
 
 
 def get_manali_credits(username, password):
@@ -34,7 +31,6 @@ def get_manali_credits(username, password):
         creditsAll = jsonCreditResponse['Balance']
         creditsPromo = creditsAll.split('|')[0]
         creditsTrans = creditsAll.split('|')[1]
-        # print(username + " = " + str(creditsAll))
         print(f"{username} = {str(creditsPromo)} | {str(creditsTrans)}\n")
 
     return username, creditsAll
@@ -62,7 +58,6 @@ def get_dategen_credits(username, password):
         jsonCreditResponse = creditResponse.json()
         credits = jsonCreditResponse['data'][0]['credit']
         userName2 = jsonCreditResponse['data'][0]['username']
-        # print(userName2 + " = " + str(credits))
         print(f"{userName2} = {str(credits)}\n")
     
     return userName2, credits
@@ -126,13 +121,3 @@ def main():
     requests.post(slack_webhook, json= payload, headers={'content-type': 'application/json'})
 
 main()  
-    
-# def run_every_hour():
-#     while True:
-#         main()
-#         # Sleep for half an hour (3600 seconds)
-#         time.sleep(3600)
-
-
-# if __name__ == "__main__":
-#     run_every_hour()
