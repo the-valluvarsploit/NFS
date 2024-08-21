@@ -77,6 +77,8 @@ def main():
     ntftrans_password = os.environ["NTFTRANS_PASSWORD"]
     ntfpromo_username = os.environ["NTFPROMO_USERNAME"]
     ntfpromo_password = os.environ["NTFPROMO_PASSWORD"]
+    ntfpromo2_username = os.environ["NTFPROMO2_USERNAME"]
+    ntfpromo2_password = os.environ["NTFPROMO2_PASSWORD"]
     datagntf_username = os.environ["DATAG_NTF_USERNAME"]
     datagntf_password = os.environ["DATAG_NTF_PASSWORD"]
     datagntf2_username = os.environ["DATAG_NTF2_USERNAME"]
