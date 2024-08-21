@@ -81,6 +81,8 @@ def main():
     datagntf_password = os.environ["DATAG_NTF_PASSWORD"]
     datagntf2_username = os.environ["DATAG_NTF2_USERNAME"]
     datagntf2_password = os.environ["DATAG_NTF2_PASSWORD"]
+    datagntf3_username = os.environ["DATAG_NTF3_USERNAME"]
+    datagntf3_password = os.environ["DATAG_NTF3_PASSWORD"]
     bsnl_ntftr8_url = os.environ["BSNL_NTFTR8_URL"]
     bsnl_ntftr8_username = os.environ["BSNL_NTFTR8_USERNAME"]
     bsnl_ntftr8_password = os.environ["BSNL_NTFTR8_PASSWORD"]
@@ -96,9 +98,13 @@ def main():
     time.sleep(5)
     username4, credits_ntfpromo = get_manali_credits(ntfpromo_username, ntfpromo_password)
     time.sleep(5)
+    username10, credits_ntfpromo2 = get_manali_credits(ntfpromo2_username, ntfpromo2_password)
+    time.sleep(5)
     username5, credits_datag_ntf = get_dategen_credits(datagntf_username, datagntf_password)
     time.sleep(5)
     username6, credits_datag_ntf2 = get_dategen_credits(datagntf2_username, datagntf2_password)
+    time.sleep(5)
+    username9, credits_datag_ntf3 = get_dategen_credits(datagntf3_username, datagntf3_password)
     time.sleep(5)
     username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)
     time.sleep(5)
@@ -108,14 +114,19 @@ def main():
 
     payload = {
     'text': '<!channel>, Credits Update:\n\n' +
-            username1 + ' = ' + str(credits_ntfv) + '\n\n' +
-            username2 + ' = ' + str(credits_ntf1) + '\n\n' +
-            username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
-            username4 + ' = ' + str(credits_ntfpromo) + '\n\n' +
-            username5 + ' = ' + str(credits_datag_ntf) + '\n\n' +
-            username6 + ' = ' + str(credits_datag_ntf2) + '\n\n' +
-            username7 + ' = ' + str(credits_ntftr8) + '\n\n' +
-            username8 + ' = ' + str(credits_ntftr) + '\n\n'
+            '*Manali:*' + '\n' +
+            username1 + ' = ' + str(credits_ntfv) + '\n' +
+            username2 + ' = ' + str(credits_ntf1) + '\n' +
+            username3 + ' = ' + str(credits_ntftrans) + '\n' +
+            username4 + ' = ' + str(credits_ntfpromo) + '\n' +
+            username10 + ' = ' + str(credits_ntfpromo2) + '\n' +
+            '*Ravi:*' + '\n' +
+            username5 + ' = ' + str(credits_datag_ntf) + '\n' +
+            username6 + ' = ' + str(credits_datag_ntf2) + '\n' +
+            username9 + ' = ' + str(credits_datag_ntf3) + '\n' +
+            '*Shubam:*' + '\n' +
+            username7 + ' = ' + str(credits_ntftr8) + '\n' +
+            username8 + ' = ' + str(credits_ntftr) + '\n'
     }
 
     requests.post(slack_webhook, json= payload, headers={'content-type': 'application/json'})
