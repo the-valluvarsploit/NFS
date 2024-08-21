@@ -117,18 +117,18 @@ def main():
     payload = {
     'text': '<!channel>, Credits Update:\n\n' +
             '*Manali:*' + '\n' +
-            username1 + '(SS) = ' + str(credits_ntfv) + '\n' +
-            username2 + '(RS) = ' + str(credits_ntf1) + '\n' +
+            username1 + ' (SS) = ' + str(credits_ntfv) + '\n' +
+            username2 + ' (RS) = ' + str(credits_ntf1) + '\n' +
             username3 + ' = ' + str(credits_ntftrans) + '\n' +
-            username4 + '(RS) = ' + str(credits_ntfpromo) + '\n' +
-            username10 + '(SS) = ' + str(credits_ntfpromo2) + '\n' +
+            username4 + ' (RS) = ' + str(credits_ntfpromo) + '\n' +
+            username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n' +
             '*Ravi:*' + '\n' +
-            username5 + '(SS) = ' + str(credits_datag_ntf) + '\n' +
-            username6 + '(RS) = ' + str(credits_datag_ntf2) + '\n' +
+            username5 + ' (SS) = ' + str(credits_datag_ntf) + '\n' +
+            username6 + ' (RS) = ' + str(credits_datag_ntf2) + '\n' +
             username9 + ' = ' + str(credits_datag_ntf3) + '\n' +
             '*Shubam:*' + '\n' +
-            username7 + '(RS) = ' + str(credits_ntftr8) + '\n' +
-            username8 + '(SS) = ' + str(credits_ntftr) + '\n'
+            username7 + ' (RS) = ' + str(credits_ntftr8) + '\n' +
+            username8 + ' (SS) = ' + str(credits_ntftr) + '\n'
     }
 
     requests.post(slack_webhook, json= payload, headers={'content-type': 'application/json'})
