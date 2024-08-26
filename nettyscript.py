@@ -96,8 +96,8 @@ def main():
     time.sleep(5)
     username2, credits_ntf1 = get_manali_credits(ntf1_username, ntf1_password)
     time.sleep(5)
-    username3, credits_ntftrans = get_manali_credits(ntftrans_username, ntftrans_password)
-    time.sleep(5)
+    # username3, credits_ntftrans = get_manali_credits(ntftrans_username, ntftrans_password)   # nettytrans Transactional Gateway
+    # time.sleep(5)
     username4, credits_ntfpromo = get_manali_credits(ntfpromo_username, ntfpromo_password)
     time.sleep(5)
     username10, credits_ntfpromo2 = get_manali_credits(ntfpromo2_username, ntfpromo2_password)
@@ -106,8 +106,8 @@ def main():
     time.sleep(5)
     username6, credits_datag_ntf2 = get_dategen_credits(datagntf2_username, datagntf2_password)
     time.sleep(5)
-    username9, credits_datag_ntf3 = get_dategen_credits(datagntf3_username, datagntf3_password)
-    time.sleep(5)
+    # username9, credits_datag_ntf3 = get_dategen_credits(datagntf3_username, datagntf3_password)  # Nettyfish3 Promotional Gateway
+    # time.sleep(5)
     username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)
     time.sleep(5)
     username8, credits_ntftr = get_bsnl_credits(bsnl_ntftr_url, bsnl_ntftr_username, bsnl_ntftr_password)
@@ -119,13 +119,13 @@ def main():
             '*Manali:*' + '\n' +
             username1 + ' (SS) = ' + str(credits_ntfv) + '\n\n' +
             username2 + ' (RS) = ' + str(credits_ntf1) + '\n\n' +
-            username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
+            # username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
             username4 + ' (RS) = ' + str(credits_ntfpromo) + '\n\n' +
-            username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n' +
+            username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' +
             '*Ravi:*' + '\n' +
             username5 + ' (SS) = ' + str(credits_datag_ntf) + '\n\n' +
             username6 + ' (RS) = ' + str(credits_datag_ntf2) + '\n\n' +
-            username9 + ' = ' + str(credits_datag_ntf3) + '\n\n' +
+            # username9 + ' = ' + str(credits_datag_ntf3) + '\n\n' +
             '*Shubam:*' + '\n' +
             username7 + ' (RS) = ' + str(credits_ntftr8) + '\n\n' +
             username8 + ' (SS) = ' + str(credits_ntftr) + '\n'
