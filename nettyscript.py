@@ -108,9 +108,9 @@ def main():
     time.sleep(5)
     # username9, credits_datag_ntf3 = get_dategen_credits(datagntf3_username, datagntf3_password)  # Nettyfish3 Promotional Gateway
     # time.sleep(5)
-    username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)
-    time.sleep(5)
-    username8, credits_ntftr = get_bsnl_credits(bsnl_ntftr_url, bsnl_ntftr_username, bsnl_ntftr_password)
+    # username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)  # commented because BSNL accounts deactivated.
+    # time.sleep(5) # commented because BSNL accounts deactivated.
+    # username8, credits_ntftr = get_bsnl_credits(bsnl_ntftr_url, bsnl_ntftr_username, bsnl_ntftr_password) # commented because BSNL accounts deactivated.
 
     print(f"\n---------------------------------------------------\n")
 
