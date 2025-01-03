@@ -52,6 +52,8 @@ jobs:
           BSNL_NTFTR_URL: ${{secrets.BSNL_NTFTR_URL}}
           BSNL_NTFTR_USERNAME: ${{secrets.BSNL_NTFTR_USERNAME}}
           BSNL_NTFTR_PASSWORD: ${{secrets.BSNL_NTFTR_PASSWORD}}
+          NETYFISH_USERNAME: ${{secrets.NETYFISH_USERNAME}}
+          NETYFISH_PASSWORD: ${{secrets.NETYFISH_PASSWORD}}
 
         run: python nettyscript.py
           
