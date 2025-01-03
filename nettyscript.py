@@ -79,18 +79,20 @@ def main():
     ntfpromo_password = os.environ["NTFPROMO_PASSWORD"]
     ntfpromo2_username = os.environ["NTFPROMO2_USERNAME"] # netpromo
     ntfpromo2_password = os.environ["NTFPROMO2_PASSWORD"]
-    datagntf_username = os.environ["DATAG_NTF_USERNAME"]
-    datagntf_password = os.environ["DATAG_NTF_PASSWORD"]
-    datagntf2_username = os.environ["DATAG_NTF2_USERNAME"]
-    datagntf2_password = os.environ["DATAG_NTF2_PASSWORD"]
-    datagntf3_username = os.environ["DATAG_NTF3_USERNAME"]
-    datagntf3_password = os.environ["DATAG_NTF3_PASSWORD"]
-    bsnl_ntftr8_url = os.environ["BSNL_NTFTR8_URL"]
-    bsnl_ntftr8_username = os.environ["BSNL_NTFTR8_USERNAME"]
-    bsnl_ntftr8_password = os.environ["BSNL_NTFTR8_PASSWORD"]
-    bsnl_ntftr_url = os.environ["BSNL_NTFTR_URL"]
-    bsnl_ntftr_username = os.environ["BSNL_NTFTR_USERNAME"]
-    bsnl_ntftr_password = os.environ["BSNL_NTFTR_PASSWORD"]
+    netyfish_username = os.environ["NETYFISH_USERNAME"]  # netyfisht
+    netyfish_password = os.environ["NETYFISH_PASSWORD"]
+    # datagntf_username = os.environ["DATAG_NTF_USERNAME"]
+    # datagntf_password = os.environ["DATAG_NTF_PASSWORD"]
+    # datagntf2_username = os.environ["DATAG_NTF2_USERNAME"]
+    # datagntf2_password = os.environ["DATAG_NTF2_PASSWORD"]
+    # datagntf3_username = os.environ["DATAG_NTF3_USERNAME"]
+    # datagntf3_password = os.environ["DATAG_NTF3_PASSWORD"]
+    # bsnl_ntftr8_url = os.environ["BSNL_NTFTR8_URL"]
+    # bsnl_ntftr8_username = os.environ["BSNL_NTFTR8_USERNAME"]
+    # bsnl_ntftr8_password = os.environ["BSNL_NTFTR8_PASSWORD"]
+    # bsnl_ntftr_url = os.environ["BSNL_NTFTR_URL"]
+    # bsnl_ntftr_username = os.environ["BSNL_NTFTR_USERNAME"]
+    # bsnl_ntftr_password = os.environ["BSNL_NTFTR_PASSWORD"]
 
     username1, credits_ntfv = get_manali_credits(ntfv_username, ntfv_password) # netfishv
     time.sleep(5)
@@ -101,6 +103,8 @@ def main():
     username4, credits_ntfpromo = get_manali_credits(ntfpromo_username, ntfpromo_password)  # netypromo
     time.sleep(5)
     username10, credits_ntfpromo2 = get_manali_credits(ntfpromo2_username, ntfpromo2_password)  # netpromo
+    time.sleep(5)
+    username11, credits_netyfish = get_manali_credits(netyfish_username, netyfish_password)  # netyfisht
     # time.sleep(5)
     # username5, credits_datag_ntf = get_dategen_credits(datagntf_username, datagntf_password)
     # time.sleep(5)
@@ -119,9 +123,10 @@ def main():
             '*Manali:*' + '\n' +
             username1 + ' (SS) = ' + str(credits_ntfv) + '\n\n' + # netfishv
             username2 + ' (RS) = ' + str(credits_ntf1) + '\n\n' + # netyfish1
-            username3 + ' = ' + str(credits_ntftrans) + '\n\n' + # nettytrans
+            username3 + ' (RS) = ' + str(credits_ntftrans) + '\n\n' + # nettytrans
             username4 + ' (RS) = ' + str(credits_ntfpromo) + '\n\n' + # netypromo
             username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' # netpromo
+            username11 + ' (SS) = ' + str(credits_netyfish) + '\n\n' # netyfisht
     }
 
     # payload = {
