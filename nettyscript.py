@@ -125,7 +125,7 @@ def main():
             username2 + ' (RS) = ' + str(credits_ntf1) + '\n\n' + # netyfish1
             username3 + ' (RS) = ' + str(credits_ntftrans) + '\n\n' + # nettytrans
             username4 + ' (RS) = ' + str(credits_ntfpromo) + '\n\n' + # netypromo
-            username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' # netpromo
+            username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' + # netpromo
             username11 + ' (SS) = ' + str(credits_netyfish) + '\n\n' # netyfisht
     }
 
