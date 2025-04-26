@@ -11,19 +11,6 @@ whatsapp_api_key = os.environ["WHATSAPP_API_KEY"]
 channel_number = os.environ["CHANNEL_NUMBER"]
 send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]
 
-def get_bsnl_credits(URL, userid, password):
-    URL = URL + "/SMSApi/account/readstatus"
-    params = {'userid': userid, 'password': password, 'output': 'json'}
-
-    creditResponse = requests.get(URL, params=params, headers=headers)
-
-    if creditResponse.status_code == 200:
-        jsonCreditResponse = creditResponse.json()
-        credits = jsonCreditResponse['response']['account']['smsBalance']
-        print(f"{userid} = {credits}\n")
-
-    return userid, credits
-
 
 def get_manali_credits(username, password):
     URL = os.environ["MANALI_API_ENDPOINT"]
@@ -34,57 +21,32 @@ def get_manali_credits(username, password):
     if creditResponse.status_code == 200:
         jsonCreditResponse = creditResponse.json()
         creditsAll = jsonCreditResponse['Balance']
-        creditsPromo = creditsAll.split('|')[0]
-        creditsTrans = creditsAll.split('|')[1]
+        promoPart = creditsAll.split('|')[0]
+        promoCredit = promoPart.split(':')[1]
+        TransPart = creditsAll.split('|')[1]
+        TransCredit = TransPart.split(':')[1]
         # print(f"{username} = {str(creditsPromo)} | {str(creditsTrans)}\n")
        
         if username == "netfishv":
-            if int(creditsTrans) > 200000:
-                whatsapp_notify(username, creditsTrans)
+            if int(TransCredit) < 200000:
+                whatsapp_notify(username, TransCredit)
         elif username == "netyfish1":
-            if int(creditsTrans) < 200000:
-                whatsapp_notify(username, creditsTrans)
+            if int(TransCredit) < 200000:
+                whatsapp_notify(username, TransCredit)
         elif username == "nettytrans":
-            if int(creditsTrans) < 200000:
-                whatsapp_notify(username, creditsTrans)
+            if int(TransCredit) < 200000:
+                whatsapp_notify(username, TransCredit)
         elif username == "netyfish":
-            if int(creditsTrans) < 200000:
-                whatsapp_notify(username, creditsTrans)
+            if int(TransCredit) < 200000:
+                whatsapp_notify(username, TransCredit)
         elif username == "netypromo":
-            if int(creditsPromo) < 200000:
-                whatsapp_notify(username, creditsPromo)
+            if int(promoCredit) < 200000:
+                whatsapp_notify(username, promoCredit)
         elif username == "netpromo":
-            if int(creditsPromo) < 200000:
-                whatsapp_notify(username, creditsPromo)
+            if int(promoCredit) < 200000:
+                whatsapp_notify(username, promoCredit)
 
     return username, creditsAll
-
-
-def get_dategen_credits(username, password):
-    url = os.environ["DATAGEN_URL"]
-    loginEndpoint = "/apismpp/v1/login.php"
-    loginParams = {'username': username, 'password': password}
-
-    loginResponse = requests.get(url + loginEndpoint, params=loginParams, headers=headers)
-
-    if loginResponse.status_code == 200:
-        jsonLoginResponse = loginResponse.json()
-        name = jsonLoginResponse['user']['name']
-        token = jsonLoginResponse['user']['token']
-        type = jsonLoginResponse['user']['type']
- 
-    creditEndpoint = "/apismpp/v1/users.php"
-    creditParams = {'user_id': name, 'method': 'retrieve_profile', 'id': name, 'token': token, 'user_type': type}
-
-    creditResponse = requests.get(url + creditEndpoint, params=creditParams, headers=headers)
-        
-    if creditResponse.status_code == 200:
-        jsonCreditResponse = creditResponse.json()
-        credits = jsonCreditResponse['data'][0]['credit']
-        userName2 = jsonCreditResponse['data'][0]['username']
-        print(f"{userName2} = {str(credits)}\n")
-    
-    return userName2, credits
 
 
 def whatsapp_notify(username, balance):
@@ -144,18 +106,6 @@ def main():
     ntfpromo2_password = os.environ["NTFPROMO2_PASSWORD"]
     netyfish_username = os.environ["NETYFISH_USERNAME"]  # netyfisht
     netyfish_password = os.environ["NETYFISH_PASSWORD"]
-    # datagntf_username = os.environ["DATAG_NTF_USERNAME"]
-    # datagntf_password = os.environ["DATAG_NTF_PASSWORD"]
-    # datagntf2_username = os.environ["DATAG_NTF2_USERNAME"]
-    # datagntf2_password = os.environ["DATAG_NTF2_PASSWORD"]
-    # datagntf3_username = os.environ["DATAG_NTF3_USERNAME"]
-    # datagntf3_password = os.environ["DATAG_NTF3_PASSWORD"]
-    # bsnl_ntftr8_url = os.environ["BSNL_NTFTR8_URL"]
-    # bsnl_ntftr8_username = os.environ["BSNL_NTFTR8_USERNAME"]
-    # bsnl_ntftr8_password = os.environ["BSNL_NTFTR8_PASSWORD"]
-    # bsnl_ntftr_url = os.environ["BSNL_NTFTR_URL"]
-    # bsnl_ntftr_username = os.environ["BSNL_NTFTR_USERNAME"]
-    # bsnl_ntftr_password = os.environ["BSNL_NTFTR_PASSWORD"]
 
     username1, credits_ntfv = get_manali_credits(ntfv_username, ntfv_password) # netfishv
     time.sleep(5)
@@ -168,16 +118,6 @@ def main():
     username10, credits_ntfpromo2 = get_manali_credits(ntfpromo2_username, ntfpromo2_password)  # netpromo
     time.sleep(5)
     username11, credits_netyfish = get_manali_credits(netyfish_username, netyfish_password)  # netyfisht
-    # time.sleep(5)
-    # username5, credits_datag_ntf = get_dategen_credits(datagntf_username, datagntf_password)
-    # time.sleep(5)
-    # username6, credits_datag_ntf2 = get_dategen_credits(datagntf2_username, datagntf2_password)
-    # time.sleep(5)
-    # username9, credits_datag_ntf3 = get_dategen_credits(datagntf3_username, datagntf3_password)  # Nettyfish3 Promotional Gateway
-    # time.sleep(5)
-    # username7, credits_ntftr8 = get_bsnl_credits(bsnl_ntftr8_url, bsnl_ntftr8_username, bsnl_ntftr8_password)  # commented because BSNL accounts deactivated.
-    # time.sleep(5) # commented because BSNL accounts deactivated.
-    # username8, credits_ntftr = get_bsnl_credits(bsnl_ntftr_url, bsnl_ntftr_username, bsnl_ntftr_password) # commented because BSNL accounts deactivated.
 
     print(f"\n---------------------------------------------------\n")
 
@@ -191,38 +131,6 @@ def main():
             username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' + # netpromo
             username11 + ' (SS) = ' + str(credits_netyfish) + '\n\n' # netyfisht
     }
-
-    # payload = {
-    # 'text': '<!channel>, Credits Update:\n\n' +
-    #         '*Manali:*' + '\n' +
-    #         username1 + ' (SS) = ' + str(credits_ntfv) + '\n\n' +
-    #         username2 + ' (RS) = ' + str(credits_ntf1) + '\n\n' +
-    #         # username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
-    #         username4 + ' (RS) = ' + str(credits_ntfpromo) + '\n\n' +
-    #         username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' +
-    #         '*Ravi:*' + '\n' +
-    #         username5 + ' (SS) = ' + str(credits_datag_ntf) + '\n\n' +
-    #         username6 + ' (RS) = ' + str(credits_datag_ntf2) + '\n\n'
-    #         # username9 + ' = ' + str(credits_datag_ntf3) + '\n\n'
-    # }
-
-# commented because BSNL accounts deactivated.
-    # payload = {
-    # 'text': '<!channel>, Credits Update:\n\n' +
-    #         '*Manali:*' + '\n' +
-    #         username1 + ' (SS) = ' + str(credits_ntfv) + '\n\n' +
-    #         username2 + ' (RS) = ' + str(credits_ntf1) + '\n\n' +
-    #         # username3 + ' = ' + str(credits_ntftrans) + '\n\n' +
-    #         username4 + ' (RS) = ' + str(credits_ntfpromo) + '\n\n' +
-    #         username10 + ' (SS) = ' + str(credits_ntfpromo2) + '\n\n' +
-    #         '*Ravi:*' + '\n' +
-    #         username5 + ' (SS) = ' + str(credits_datag_ntf) + '\n\n' +
-    #         username6 + ' (RS) = ' + str(credits_datag_ntf2) + '\n\n' +
-    #         # username9 + ' = ' + str(credits_datag_ntf3) + '\n\n' +
-    #         '*Shubam:*' + '\n' +
-    #         username7 + ' (RS) = ' + str(credits_ntftr8) + '\n\n' +
-    #         username8 + ' (SS) = ' + str(credits_ntftr) + '\n'
-    # }
 
     requests.post(slack_webhook, json= payload, headers={'content-type': 'application/json'})
 
