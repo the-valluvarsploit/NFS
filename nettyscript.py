@@ -34,8 +34,8 @@ def get_manali_credits(username, password):
     if creditResponse.status_code == 200:
         jsonCreditResponse = creditResponse.json()
         creditsAll = jsonCreditResponse['Balance']
-        creditsPromo = creditsAll.split('|')[0]
-        creditsTrans = creditsAll.split('|')[1]
+        creditsPromo = int(creditsAll.split('|')[0])
+        creditsTrans = int(creditsAll.split('|')[1])
         # print(f"{username} = {str(creditsPromo)} | {str(creditsTrans)}\n")
        
         if username == "netfishv":
