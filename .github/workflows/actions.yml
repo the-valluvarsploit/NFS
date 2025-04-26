@@ -54,6 +54,10 @@ jobs:
           BSNL_NTFTR_PASSWORD: ${{secrets.BSNL_NTFTR_PASSWORD}}
           NETYFISH_USERNAME: ${{secrets.NETYFISH_USERNAME}}
           NETYFISH_PASSWORD: ${{secrets.NETYFISH_PASSWORD}}
+          WHATSAPP_API_KEY: ${{secrets.WHATSAPP_API_KEY}}
+          CHANNEL_NUMBER: ${{secrets.CHANNEL_NUMBER}}
+          SEND_SMS_TO_NUMBERS: ${{secrets.SEND_SMS_TO_NUMBERS}}
+
 
         run: python nettyscript.py
           
