@@ -8,7 +8,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Ge
 slack_webhook = os.environ["SLACK_WEBHOOK"]
 whatsapp_api_key = os.environ["WHATSAPP_API_KEY"]
 channel_number = os.environ["CHANNEL_NUMBER"]
-send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]
+send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]  # 9197******20,9186*****44,9163******38
 
 
 def get_manali_credits(username, password):
