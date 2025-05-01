@@ -122,7 +122,6 @@ def main():
 
     payload = {
     'text': '<!channel>, Credits Update:\n\n' +
-            '*Manali:*' + '\n' +
             username1 + ' (SS) = ' + str(credits_ntfv) + '\n\n' + # netfishv
             username2 + ' (RS) = ' + str(credits_ntf1) + '\n\n' + # netyfish1
             username3 + ' (RS) = ' + str(credits_ntftrans) + '\n\n' + # nettytrans
