@@ -27,10 +27,10 @@ def get_manali_credits(username, password):
         # print(f"{username} = {str(creditsPromo)} | {str(creditsTrans)}\n")
        
         if username == "netfishv":
-            if int(TransCredit) < 300000:
+            if int(TransCredit) < 200000:
                 whatsapp_notify(username, TransCredit)
         elif username == "netyfish1":
-            if int(TransCredit) < 300000:
+            if int(TransCredit) < 200000:
                 whatsapp_notify(username, TransCredit)
         elif username == "nettytrans":
             if int(TransCredit) < 200000:
