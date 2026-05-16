@@ -6,6 +6,7 @@ import json
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0'}
 slack_webhook = os.environ["SLACK_WEBHOOK"]
+api_hostname = os.environ["API_HOSTNAME"]
 whatsapp_api_key = os.environ["WHATSAPP_API_KEY"]
 channel_number = os.environ["CHANNEL_NUMBER"]
 send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]
@@ -87,7 +88,7 @@ def get_dategen_credits(username, password):
 
 
 def whatsapp_notify(username, balance):
-    whatsapp_url = f"https://api.wacto.app/api/v1.0/messages/send-template/{channel_number}"
+    whatsapp_url = f"https://{api_hostname}/api/v1.0/messages/send-template/{channel_number}"
     payload = json.dumps({
               "messaging_product": "whatsapp",
               "recipient_type": "individual",

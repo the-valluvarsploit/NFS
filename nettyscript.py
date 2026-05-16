@@ -6,9 +6,12 @@ import json
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0'}
 slack_webhook = os.environ["SLACK_WEBHOOK"]
+api_hostname = os.environ["API_HOSTNAME"]
+api_version = "v22.0"
+phone_number_id = os.environ["PHONE_NUMBER_ID"]
 whatsapp_api_key = os.environ["WHATSAPP_API_KEY"]
 channel_number = os.environ["CHANNEL_NUMBER"]
-send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]  # 9197******20,9186*****44,9163******38
+send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]  # 9174*****71,9186*****44,9163******38
 
 
 def get_manali_credits(username, password):
@@ -48,8 +51,46 @@ def get_manali_credits(username, password):
     return username, creditsAll
 
 
+# def whatsapp_notify_wacto_app(username, balance):
+#     whatsapp_url = f"https://{api_hostname}/api/v1.0/messages/send-template/{channel_number}"
+#     payload = json.dumps({
+#               "messaging_product": "whatsapp",
+#               "recipient_type": "individual",
+#               "to": send_sms_to_numbers,
+#               "type": "template",
+#               "template": {
+#                  "name": "sms_low_credits_notification",
+#                  "language": {
+#                     "code": "en"
+#               },
+#             "components": [
+#               {
+#                 "type": "body",
+#                 "parameters": [
+#                     {
+#                         "type": "text",
+#                         "text": username
+#                     },
+#                     {
+#                         "type": "text",
+#                         "text": balance
+#                     }
+#                 ]
+#              }
+#            ]
+#           }
+#          })
+    
+#     headers = {
+#         'Content-Type': 'application/json',
+#         'Authorization': f'Bearer {whatsapp_api_key}'
+#     }
+
+#     response = requests.post(whatsapp_url, headers=headers, data=payload)
+#     # print(response.text)
+    
 def whatsapp_notify(username, balance):
-    whatsapp_url = f"https://api.wacto.app/api/v1.0/messages/send-template/{channel_number}"
+    whatsapp_url = f"https://{api_hostname}/{api_version}/{phone_number_id}/messages"
     payload = json.dumps({
               "messaging_product": "whatsapp",
               "recipient_type": "individual",
@@ -61,20 +102,37 @@ def whatsapp_notify(username, balance):
                     "code": "en"
               },
             "components": [
-              {
-                "type": "body",
-                "parameters": [
-                    {
-                        "type": "text",
-                        "text": username
-                    },
-                    {
-                        "type": "text",
-                        "text": balance
-                    }
-                ]
-             }
-           ]
+                {
+                    "type": "header",
+                    "parameters": [
+                        {
+                            "type": "text",
+                            "text": "SMS"
+                        }
+                    ]
+                },
+                {
+                    "type": "body",
+                    "parameters": [
+                        {
+                            "type": "text",
+                            "text": "SMS"
+                        },
+                        {
+                            "type": "text",
+                            "text": "SMS"
+                        },
+                        {
+                            "type": "text",
+                            "text": username
+                        },
+                        {
+                            "type": "text",
+                            "text": balance
+                        }
+                    ]
+                }
+            ]
           }
          })
     
@@ -85,8 +143,7 @@ def whatsapp_notify(username, balance):
 
     response = requests.post(whatsapp_url, headers=headers, data=payload)
     # print(response.text)
-    
-    
+
 def main():
     tempDate = datetime.datetime.now()
     currentDate = tempDate.strftime("%d-%m-%Y %H:%M:%S")
