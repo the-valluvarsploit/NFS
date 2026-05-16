@@ -90,7 +90,8 @@ def get_manali_credits(username, password):
 #     # print(response.text)
     
 def whatsapp_notify(username, balance, receipient_list):
-    for receipient in receipient_list:
+    receipient_list_f = json.loads(receipient_list)
+    for receipient in receipient_list_f:
         print(receipient)
         whatsapp_url = f"https://{api_hostname}/{api_version}/{phone_number_id}/messages"
         payload = json.dumps({
