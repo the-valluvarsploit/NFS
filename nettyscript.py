@@ -11,7 +11,7 @@ api_version = "v22.0"
 phone_number_id = os.environ["PHONE_NUMBER_ID"]
 whatsapp_api_key = os.environ["WHATSAPP_API_KEY"]
 channel_number = os.environ["CHANNEL_NUMBER"]
-send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]  # 9174*****71,9186*****44,9163******38
+send_sms_to_numbers = os.environ["SEND_SMS_TO_NUMBERS"]  # [91*****38,9186*****44,9174*****71]
 
 
 def get_manali_credits(username, password):
