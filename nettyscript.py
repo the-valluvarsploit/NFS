@@ -31,22 +31,22 @@ def get_manali_credits(username, password):
        
         if username == "netfishv":
             if int(TransCredit) < 100000:
-                whatsapp_notify(username, TransCredit)
+                whatsapp_notify(username, TransCredit, send_sms_to_numbers)
         elif username == "netyfish1":
             if int(TransCredit) < 100000:
-                whatsapp_notify(username, TransCredit)
+                whatsapp_notify(username, TransCredit, send_sms_to_numbers)
         elif username == "nettytrans":
             if int(TransCredit) < 100000:
-                whatsapp_notify(username, TransCredit)
+                whatsapp_notify(username, TransCredit, send_sms_to_numbers)
         elif username == "netyfish":
             if int(TransCredit) < 100000:
-                whatsapp_notify(username, TransCredit)
+                whatsapp_notify(username, TransCredit, send_sms_to_numbers)
         elif username == "netypromo":
             if int(promoCredit) < 100000:
-                whatsapp_notify(username, promoCredit)
+                whatsapp_notify(username, promoCredit, send_sms_to_numbers)
         elif username == "netpromo":
             if int(promoCredit) < 100000:
-                whatsapp_notify(username, promoCredit)
+                whatsapp_notify(username, promoCredit, send_sms_to_numbers)
 
     return username, creditsAll
 
@@ -89,61 +89,61 @@ def get_manali_credits(username, password):
 #     response = requests.post(whatsapp_url, headers=headers, data=payload)
 #     # print(response.text)
     
-def whatsapp_notify(username, balance):
-    print(username, balance)
-    whatsapp_url = f"https://{api_hostname}/{api_version}/{phone_number_id}/messages"
-    payload = json.dumps({
-              "messaging_product": "whatsapp",
-              "recipient_type": "individual",
-              "to": send_sms_to_numbers,
-              "type": "template",
-              "template": {
-                 "name": "sms_low_credits_notification",
-                 "language": {
-                    "code": "en"
-              },
-            "components": [
-                {
-                    "type": "header",
-                    "parameters": [
-                        {
-                            "type": "text",
-                            "text": "SMS"
-                        }
-                    ]
+def whatsapp_notify(username, balance, receipient_list):
+    for receipient in receipient_list:
+        whatsapp_url = f"https://{api_hostname}/{api_version}/{phone_number_id}/messages"
+        payload = json.dumps({
+                "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": receipient,
+                "type": "template",
+                "template": {
+                    "name": "sms_low_credits_notification",
+                    "language": {
+                        "code": "en"
                 },
-                {
-                    "type": "body",
-                    "parameters": [
-                        {
-                            "type": "text",
-                            "text": "SMS"
-                        },
-                        {
-                            "type": "text",
-                            "text": "SMS"
-                        },
-                        {
-                            "type": "text",
-                            "text": username
-                        },
-                        {
-                            "type": "text",
-                            "text": balance
-                        }
-                    ]
-                }
-            ]
-          }
-         })
-    
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {whatsapp_api_key}'
-    }
+                "components": [
+                    {
+                        "type": "header",
+                        "parameters": [
+                            {
+                                "type": "text",
+                                "text": "SMS"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "body",
+                        "parameters": [
+                            {
+                                "type": "text",
+                                "text": "SMS"
+                            },
+                            {
+                                "type": "text",
+                                "text": "SMS"
+                            },
+                            {
+                                "type": "text",
+                                "text": username
+                            },
+                            {
+                                "type": "text",
+                                "text": balance
+                            }
+                        ]
+                    }
+                ]
+            }
+            })
+        
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {whatsapp_api_key}'
+        }
 
-    response = requests.post(whatsapp_url, headers=headers, data=payload)
-    print(response.text)
+        response = requests.post(whatsapp_url, headers=headers, data=payload)
+        print(response.text)
 
 def main():
     tempDate = datetime.datetime.now()
