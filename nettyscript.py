@@ -97,7 +97,7 @@ def whatsapp_notify(username, balance, receipient_list):
         payload = json.dumps({
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
-                "to": receipient,
+                "to": str(receipient),
                 "type": "template",
                 "template": {
                     "name": "sms_low_credits_notification",
@@ -127,11 +127,11 @@ def whatsapp_notify(username, balance, receipient_list):
                             },
                             {
                                 "type": "text",
-                                "text": username
+                                "text": str(username)
                             },
                             {
                                 "type": "text",
-                                "text": balance
+                                "text": str(balance)
                             }
                         ]
                     }
