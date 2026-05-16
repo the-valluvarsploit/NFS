@@ -90,6 +90,7 @@ def get_manali_credits(username, password):
 #     # print(response.text)
     
 def whatsapp_notify(username, balance):
+    print(username, balance)
     whatsapp_url = f"https://{api_hostname}/{api_version}/{phone_number_id}/messages"
     payload = json.dumps({
               "messaging_product": "whatsapp",
@@ -142,7 +143,7 @@ def whatsapp_notify(username, balance):
     }
 
     response = requests.post(whatsapp_url, headers=headers, data=payload)
-    # print(response.text)
+    print(response.text)
 
 def main():
     tempDate = datetime.datetime.now()
